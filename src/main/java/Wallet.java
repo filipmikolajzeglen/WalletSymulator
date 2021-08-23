@@ -3,6 +3,7 @@ import java.util.*;
 public class Wallet extends Symulator {
     private Integer salary;
     private Integer credit;
+    private Integer currentMoney;
     private Integer financialCushion;
     private Integer periodInYears = 1;
     private MonthsEnum startMonth;
@@ -25,6 +26,22 @@ public class Wallet extends Symulator {
         this.expenses = expenses;
     }
 
+    public Wallet(Integer salary,
+                  Integer credit,
+                  Integer currentMoney,
+                  Integer financialCushion,
+                  Integer periodInYears,
+                  MonthsEnum startMonth,
+                  List<Expense> expenses) {
+        this.salary = salary;
+        this.credit = credit;
+        this.currentMoney = currentMoney;
+        this.financialCushion = financialCushion;
+        this.periodInYears = periodInYears;
+        this.startMonth = startMonth;
+        this.expenses = expenses;
+    }
+
     public Integer getSalary() {
         return salary;
     }
@@ -36,6 +53,12 @@ public class Wallet extends Symulator {
     public Integer getCredit() { return credit; }
 
     public void setCredit(Integer credit) { this.credit = credit; }
+
+    public Integer getCurrentMoney() {
+        setCurrentMoney(0);
+        return currentMoney; }
+
+    public void setCurrentMoney(Integer currentMoney) { this.currentMoney = currentMoney; }
 
     public Integer getFinancialCushion() { return financialCushion; }
 
@@ -64,6 +87,7 @@ public class Wallet extends Symulator {
         return "Wallet{" +
                 "salary=" + salary +
                 ", credit=" + credit +
+                ", currentMoney=" + currentMoney +
                 ", financialCushion=" + financialCushion +
                 ", periodInYears=" + periodInYears +
                 ", startMonth=" + startMonth +
@@ -74,6 +98,7 @@ public class Wallet extends Symulator {
     public static class Builder {
         private Integer salary;
         private Integer credit;
+        private Integer currentMoney;
         private Integer financialCushion;
         private Integer periodInYears;
         private MonthsEnum startMonth;
@@ -90,6 +115,11 @@ public class Wallet extends Symulator {
 
         public Builder setCredit(Integer credit) {
             this.credit = credit;
+            return this;
+        }
+
+        public Builder setCurrentMoney(Integer currentMoney) {
+            this.currentMoney = currentMoney;
             return this;
         }
 
@@ -114,7 +144,15 @@ public class Wallet extends Symulator {
         }
 
         public Wallet build() {
-            return new Wallet(salary, credit, financialCushion, periodInYears, startMonth, expenses);
+            return new Wallet(
+                    salary,
+                    credit,
+                    currentMoney,
+                    financialCushion,
+                    periodInYears,
+                    startMonth,
+                    expenses
+            );
         }
     }
 }

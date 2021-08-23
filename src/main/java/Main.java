@@ -2,7 +2,7 @@ public class Main {
     public static void main(String[] args) {
 
         Wallet walletAUGtoNOV = new Wallet.Builder()
-                .setStartMonth(MonthsEnum.AUGUST)
+                .setStartMonth(MonthsEnum.SEPTEMBER)
                 .setSalary(3613)
                 .setCredit(3065)
                 .setFinancialCushion(1000)
@@ -11,10 +11,12 @@ public class Main {
                 .addExpense(new Expense("Food", 800))
                 .addExpense(new Expense("Mobile", 30))
                 .addExpense(new Expense("Transport", 200))
-                .addExpense(new Expense("Gym", 400, MonthsEnum.AUGUST))
-                .addExpense(new Expense("Gym", 400, MonthsEnum.SEPTEMBER))
+                .addExpense(new Expense("Gym", 1000, MonthsEnum.SEPTEMBER))
+                .addExpense(new Expense("Gym", 400, MonthsEnum.OCTOBER))
+                .addExpense(new Expense("Gym", 150, MonthsEnum.NOVEMBER))
+                .addExpense(new Expense("Gym", 150, MonthsEnum.DECEMBER))
                 .addExpense(new Expense("University", 2100, MonthsEnum.OCTOBER))
-                .addExpense(new Expense("Credit", 1000, MonthsEnum.AUGUST))
+                .addExpense(new Expense("Credit", 1000))
                 .build();
 
         walletAUGtoNOV.startSimulation(walletAUGtoNOV);
@@ -25,9 +27,11 @@ public class Main {
                 .setFinancialCushion(walletAUGtoNOV.getFinancialCushion())
                 .setPeriodInYears(1)
 
+                .addExpense(new Expense("Apartment", 1800))
                 .addExpense(new Expense("Food", 800))
                 .addExpense(new Expense("Mobile", 30))
                 .addExpense(new Expense("Transport", 200))
+                .addExpense(new Expense("Gym", 50))
                 .addExpense(new Expense("University", 2100, MonthsEnum.FEBRUARY))
                 .build();
 
