@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Wallet extends Symulator {
+public class Wallet extends Simulator {
     private Integer salary;
     private Integer credit;
     private Integer currentMoney;

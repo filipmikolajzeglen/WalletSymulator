@@ -12,10 +12,11 @@ public class Main {
                 .addExpense(new Expense("Mobile", 30))
                 .addExpense(new Expense("Transport", 200))
                 .addExpense(new Expense("Gym", 1000, MonthsEnum.SEPTEMBER))
-                .addExpense(new Expense("Gym", 400, MonthsEnum.OCTOBER))
-                .addExpense(new Expense("Gym", 150, MonthsEnum.NOVEMBER))
-                .addExpense(new Expense("Gym", 150, MonthsEnum.DECEMBER))
+                .addExpense(new Expense("Gym", 600, MonthsEnum.OCTOBER))
+                .addExpense(new Expense("Gym", 600, MonthsEnum.NOVEMBER))
                 .addExpense(new Expense("University", 2100, MonthsEnum.OCTOBER))
+                .addExpense(new Expense("Deposit", 1800, MonthsEnum.DECEMBER))
+                .addExpense(new Expense("Apartment", 1800, MonthsEnum.DECEMBER))
                 .addExpense(new Expense("Credit", 1000))
                 .build();
 
