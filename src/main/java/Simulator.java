@@ -26,7 +26,6 @@ public class Simulator {
     }
 
     private String checkLength(String targetLength) {
-
         if (targetLength.length() < 10) return " \t\t";
         else return " \t";
     }
