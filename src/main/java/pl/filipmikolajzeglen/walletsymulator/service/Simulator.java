@@ -1,39 +1,40 @@
+package pl.filipmikolajzeglen.walletsymulator.service;
+
+import pl.filipmikolajzeglen.walletsymulator.enums.MonthsEnum;
+import pl.filipmikolajzeglen.walletsymulator.model.Expense;
+import pl.filipmikolajzeglen.walletsymulator.model.Wallet;
+
 import java.time.LocalDate;
 
 public class Simulator {
 
-    private final LocalDate currentDate = LocalDate.now();
-    private Integer year = null;
+    private static final LocalDate currentDate = LocalDate.now();
+    private static Integer year = null;
 
-    public void setYear(Integer year) {
-        this.year = year;
+    public static int getYear(int month) {
+        if (year == null) year = currentDate.getYear();
+        if (month == 1) year += 1;
+        return year;
     }
 
-    public int getYear(int month) {
-        if (year == null) setYear(currentDate.getYear());
-        if (month == 1) setYear(this.year + 1);
-        return this.year;
-    }
-
-    private int getDifference(int amount, int payment) {
+    private static int getDifference(int amount, int payment) {
         return amount - payment;
     }
 
-    private String checkLengthOfExpenseName(Expense expanse) {
+    private static String checkLengthOfExpenseName(Expense expanse) {
         if (expanse.getExpenseName().length() < 4) return " \t\t\t";
         if (expanse.getExpenseName().length() < 8) return " \t\t";
         else return " \t";
     }
 
-    private String checkLength(String targetLength) {
-
+    private static String checkLength(String targetLength) {
         if (targetLength.length() < 10) return " \t\t";
         else return " \t";
     }
 
     // Print info about checking month
     // If provided cash is lower than expanse then get cash from financial cushion
-    private void printExpense(Expense expanse, int currentCash, int financialCushion) {
+    private static void printExpense(Expense expanse, int currentCash, int financialCushion) {
         String subtraction;
         if (currentCash < expanse.getExpenseValue()) {
             int difference = Math.abs(currentCash - expanse.getExpenseValue());
@@ -57,18 +58,18 @@ public class Simulator {
         }
     }
 
-    private String printDate(int month) {
+    private static String printDate(int month) {
         return MonthsEnum.choseMonth(month).toUpperCase() + " " + getYear(month);
     }
 
-    private String printLine(String date) {
+    private static String printLine(String date) {
         StringBuilder line = new StringBuilder(" ");
         int extraLine = date.length() < 15 ? 15 - date.length() : 0;
         line.append("─".repeat(27 + extraLine));
         return line + "\n";
     }
 
-    private void printHeader(Wallet wallet, int month) {
+    private static void printHeader(Wallet wallet, int month) {
         String header = printDate(month);
         System.out.println("────────── " + header + printLine(header));
         System.out.println("YOUR SALARY: "
@@ -79,7 +80,7 @@ public class Simulator {
                 : "\n"));
     }
 
-    private void printSummary(Wallet wallet, int currentCash, int financialCushion) {
+    private static void printSummary(Wallet wallet, int currentCash, int financialCushion) {
         wallet.setFinancialCushion(financialCushion += currentCash);
         System.out.println("\n\t -> THE REST OF MONEY: " + currentCash + " PLN");
         System.out.println("\t -> NEW FC CUSHION: " + financialCushion + " PLN");
@@ -88,7 +89,7 @@ public class Simulator {
                 : "");
     }
 
-    private void printExpensesPerMonth(Wallet wallet, int month) {
+    private static void printExpensesPerMonth(Wallet wallet, int month) {
         printHeader(wallet, month);
 
         int currentCash = wallet.getSalary();
@@ -111,7 +112,16 @@ public class Simulator {
         printSummary(wallet, currentCash, financialCushion);
     }
 
-    public void startSimulation(Wallet wallet) {
+//    public void startSimulation(Wallet wallet) {
+//        for (int y = 0; y < wallet.getPeriodInYears(); y++) {
+//            int startMonth = wallet.getStartMonth() != null ? wallet.getStartMonth().getMonth() : 1;
+//            for (int month = startMonth; month < 13; month++) {
+//                printExpensesPerMonth(wallet, month);
+//            }
+//        }
+//    }
+
+    public static void startSimulation(Wallet wallet) {
         for (int y = 0; y < wallet.getPeriodInYears(); y++) {
             int startMonth = wallet.getStartMonth() != null ? wallet.getStartMonth().getMonth() : 1;
             for (int month = startMonth; month < 13; month++) {

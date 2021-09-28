@@ -1,3 +1,5 @@
+package pl.filipmikolajzeglen.walletsymulator.enums;
+
 public enum MonthsEnum {
     JANUARY(1),
     FEBRUARY(2),

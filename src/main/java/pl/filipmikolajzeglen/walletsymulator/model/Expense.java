@@ -1,3 +1,7 @@
+package pl.filipmikolajzeglen.walletsymulator.model;
+
+import pl.filipmikolajzeglen.walletsymulator.enums.MonthsEnum;
+
 public class Expense {
     private String expenseName;
     private Integer expenseValue;

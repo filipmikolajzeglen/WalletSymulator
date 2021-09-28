@@ -1,3 +1,8 @@
+package pl.filipmikolajzeglen.walletsymulator.model;
+
+import pl.filipmikolajzeglen.walletsymulator.enums.MonthsEnum;
+import pl.filipmikolajzeglen.walletsymulator.service.Simulator;
+
 import java.util.*;
 
 public class Wallet extends Simulator {
@@ -6,7 +11,7 @@ public class Wallet extends Simulator {
     private Integer currentMoney;
     private Integer financialCushion;
     private Integer periodInYears = 1;
-    private MonthsEnum startMonth;
+    private MonthsEnum startMonth = MonthsEnum.JANUARY;
     private List<Expense> expenses;
 
     public Wallet() {
@@ -84,7 +89,7 @@ public class Wallet extends Simulator {
 
     @Override
     public String toString() {
-        return "Wallet{" +
+        return "pl.filipmikolajzeglen.walletsymulator.model.Wallet{" +
                 "salary=" + salary +
                 ", credit=" + credit +
                 ", currentMoney=" + currentMoney +
