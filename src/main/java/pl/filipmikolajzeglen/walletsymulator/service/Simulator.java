@@ -112,7 +112,7 @@ public class Simulator {
         printSummary(wallet, currentCash, financialCushion);
     }
 
-    public void startSimulation(Wallet wallet) {
+    public static void startSimulation(Wallet wallet) {
         for (int y = 0; y < wallet.getPeriodInYears(); y++) {
             int startMonth = wallet.getStartMonth() != null ? wallet.getStartMonth().getMonth() : 1;
             for (int month = startMonth; month < 13; month++) {
